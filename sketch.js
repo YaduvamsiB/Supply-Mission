@@ -71,10 +71,11 @@ function setup() {
 function draw() {
   rectMode(CENTER);
   background(0);
-  //packageSprite.visible = false;
 
   packageSprite.x = packageBody.position.x;
   packageSprite.y = packageBody.position.y;
+
+  packageSprite.position.x = helicopterSprite.x;
 
   if (keyDown("RIGHT_ARROW")) {
     helicopterSprite.x = helicopterSprite.x + 5;
@@ -84,7 +85,9 @@ function draw() {
   }
 
   if (keyDown("DOWN_ARROW") || keyDown("space")) {
-    //packageSprite.visible = true;
+    //packageSprite.position.x  helicopterSprite.x;
+    packageBody.velocityY = 3;
+    Matter.Body.setStatic(packageBody, false);
   }
   drawSprites();
 }
